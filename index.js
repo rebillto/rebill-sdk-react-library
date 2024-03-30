@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useEffect, useState } from "react";
-import * as Rebill from "@alejorrojas/test-core";
+import * as Rebill from "rebill";
 
 function isValidCustomer(customer) {
   const hasBasicProperties =
