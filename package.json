@@ -1,7 +1,7 @@
 {
-  "name": "@alejorrojas/react-library",
-  "version": "1.0.5",
-  "description": "A helper integration for JS SDK in React",
+  "name": "rebill-react",
+  "version": "1.0.0",
+  "description": "A helper integration for Rebill's JS SDK in React",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -9,7 +9,7 @@
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "@alejorrojas/test-core": "^1.0.3"
+    "rebill": "^1.0.2"
   },
   "keywords": [
     "react",
