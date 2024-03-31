@@ -1,7 +1,15 @@
-import React, { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import * as Rebill from "rebill";
+import type {
+  Customer,
+  RebillContextValue,
+  RebillProviderProps,
+  Styles,
+  Text,
+  Transaction,
+} from "./types";
 
-function isValidCustomer(customer) {
+export function isValidCustomer(customer: Customer) {
   const hasBasicProperties =
     "firstName" in customer &&
     "lastName" in customer &&
@@ -35,12 +43,16 @@ function isValidCustomer(customer) {
   );
 }
 
-const RebillContext = createContext();
+const RebillContext = createContext<RebillContextValue | undefined>(undefined);
 
-export const RebillProvider = ({ children, apiKey, rebillId }) => {
-  const [customer, setCustomer] = useState({});
-  const [metadata, setMetadata] = useState({});
-  const [sdk, setSdk] = useState(null);
+export const RebillProvider: React.FC<RebillProviderProps> = ({
+  children,
+  apiKey,
+  rebillId,
+}) => {
+  const [customer, setCustomer] = useState<Customer>({} as Customer);
+  const [metadata, setMetadata] = useState<Object>({});
+  const [sdk, setSdk] = useState<Rebill.setSdk | null>(null);
 
   useEffect(() => {
     if (!apiKey) {
@@ -71,25 +83,25 @@ export const RebillProvider = ({ children, apiKey, rebillId }) => {
     }
   }, [metadata]);
 
-  const setTransaction = (transactionData) => {
+  const setTransaction = (transactionData: Transaction) => {
     if (sdk) {
       sdk.setTransaction(transactionData);
     }
   };
 
-  const setStyles = (styles) => {
+  const setStyles = (styles: Styles) => {
     if (sdk) {
       sdk.setStyles(styles);
     }
   };
 
-  const setText = (text) => {
+  const setText = (text: Text) => {
     if (sdk) {
       sdk.setText(text);
     }
   };
 
-  const setCallbacks = (onSuccess, onError) => {
+  const setCallbacks = (onSuccess: Function, onError: Function) => {
     if (sdk) {
       sdk.setCallbacks({
         onSuccess,
@@ -98,9 +110,6 @@ export const RebillProvider = ({ children, apiKey, rebillId }) => {
     }
   };
 
-  const getStatesBy = Rebill.getStatesBy;
-  const getIdentificationBy = Rebill.getIdentificationBy;
-
   const contextValue = {
     setCustomer,
     setTransaction,
@@ -108,8 +117,8 @@ export const RebillProvider = ({ children, apiKey, rebillId }) => {
     setText,
     setCallbacks,
     setMetadata,
-    getStatesBy,
-    getIdentificationBy,
+    getStatesBy: Rebill.getStatesBy,
+    getIdentificationBy: Rebill.getIdentificationBy,
     customer,
     sdk,
   };
@@ -121,4 +130,10 @@ export const RebillProvider = ({ children, apiKey, rebillId }) => {
   );
 };
 
-export const useRebill = () => useContext(RebillContext);
+export const useRebill = (): RebillContextValue => {
+  const context = useContext(RebillContext);
+  if (context === undefined) {
+    throw new Error("useRebill must be used within a RebillProvider");
+  }
+  return context;
+};
