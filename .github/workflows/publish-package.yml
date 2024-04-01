@@ -24,6 +24,7 @@ jobs:
         working-directory: ./react-library
         run: npm run build
       - name: Publish to npm
+        working-directory: ./react-library
         run: npm publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
