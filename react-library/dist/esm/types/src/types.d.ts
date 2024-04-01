@@ -103,7 +103,7 @@ export interface RebillProviderProps {
 }
 export interface Transaction {
     id: string;
-    currency: CurrencyTypeEnum;
+    currency: string;
     quantity: number;
 }
 export interface Styles {

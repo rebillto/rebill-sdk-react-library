@@ -9,7 +9,7 @@ import type {
   Transaction,
 } from "./types";
 
-export function isValidCustomer(customer: Customer) {
+function isValidCustomer(customer: Customer) {
   const hasBasicProperties =
     "firstName" in customer &&
     "lastName" in customer &&

@@ -74,29 +74,6 @@ interface Customer {
     taxId: TaxId;
     card?: Card;
 }
-declare enum CurrencyTypeEnum {
-    ARS = "ARS",// peso argentino
-    BOB = "BOB",// peso boliviano
-    CLP = "CLP",// peso chileno
-    UYU = "UYU",// peso uruguayo
-    MXN = "MXN",// peso mexicano
-    DOP = "DOP",// peso dominicano
-    COP = "COP",// peso colombiano
-    PEN = "PEN",// soles (perú)
-    BRL = "BRL",// real (brasil)
-    EUR = "EUR",// euros
-    USD = "USD",// dólar
-    PYG = "PYG",// guaraníes
-    CRC = "CRC",// colón costarricense
-    GTQ = "GTQ",// quetzal
-    ECS = "ECS",// dólar ecuatoriano
-    SVC = "SVC",// dólar salvadoreño
-    PAB = "PAB",// balboa
-    NIO = "NIO",// córdoba
-    GBP = "GBP",// libra esterlina
-    JPY = "JPY",// yen
-    INDIFFERENT = "INDIFFERENT"
-}
 interface RebillProviderProps {
     children: ReactNode;
     apiKey: string;
@@ -104,7 +81,7 @@ interface RebillProviderProps {
 }
 interface Transaction {
     id: string;
-    currency: CurrencyTypeEnum;
+    currency: string;
     quantity: number;
 }
 interface Styles {
