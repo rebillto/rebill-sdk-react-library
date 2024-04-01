@@ -8,7 +8,7 @@
     "dist"
   ],
   "scripts": {
-    "rollup": "rollup -c --bundleConfigAsCjs"
+    "build": "rollup -c --bundleConfigAsCjs"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "^25.0.3",
