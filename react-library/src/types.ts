@@ -85,30 +85,6 @@ export interface Customer {
   card?: Card;
 }
 
-export enum CurrencyTypeEnum {
-  ARS = "ARS", // peso argentino
-  BOB = "BOB", // peso boliviano
-  CLP = "CLP", // peso chileno
-  UYU = "UYU", // peso uruguayo
-  MXN = "MXN", // peso mexicano
-  DOP = "DOP", // peso dominicano
-  COP = "COP", // peso colombiano
-  PEN = "PEN", // soles (perú)
-  BRL = "BRL", // real (brasil)
-  EUR = "EUR", // euros
-  USD = "USD", // dólar
-  PYG = "PYG", // guaraníes
-  CRC = "CRC", // colón costarricense
-  GTQ = "GTQ", // quetzal
-  ECS = "ECS", // dólar ecuatoriano
-  SVC = "SVC", // dólar salvadoreño
-  PAB = "PAB", // balboa
-  NIO = "NIO", // córdoba
-  GBP = "GBP", // libra esterlina
-  JPY = "JPY", // yen
-  INDIFFERENT = "INDIFFERENT", // international
-}
-
 export interface RebillProviderProps {
   children: ReactNode;
   apiKey: string;
@@ -216,12 +192,12 @@ export interface Text {
 export interface RebillContextValue {
   setCustomer: React.Dispatch<React.SetStateAction<Customer>>;
   setTransaction: (transactionData: Transaction) => void;
+  addCard: (customerId: string) => void;
+  renewCard: (subscriptionId: string) => void;
   setStyles: (styles: Styles) => void;
   setText: (text: Text) => void;
   setCallbacks: (onSuccess: Function, onError: Function) => void;
   setMetadata: React.Dispatch<React.SetStateAction<Object>>;
-  getStatesBy: typeof Rebill.getStatesBy;
-  getIdentificationBy: typeof Rebill.getIdentificationBy;
   customer: Customer;
   sdk: Rebill.setSdk | null;
 }

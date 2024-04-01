@@ -89,6 +89,18 @@ export const RebillProvider: React.FC<RebillProviderProps> = ({
     }
   };
 
+  const renewCard = (subscriptionId: string) => {
+    if (sdk) {
+      sdk.renewCard(subscriptionId);
+    }
+  };
+
+  const addCard = (customerId: string) => {
+    if (sdk) {
+      sdk.addCard(customerId);
+    }
+  };
+
   const setStyles = (styles: Styles) => {
     if (sdk) {
       sdk.setStyles(styles);
@@ -113,12 +125,12 @@ export const RebillProvider: React.FC<RebillProviderProps> = ({
   const contextValue = {
     setCustomer,
     setTransaction,
+    addCard,
+    renewCard,
     setStyles,
     setText,
     setCallbacks,
     setMetadata,
-    getStatesBy: Rebill.getStatesBy,
-    getIdentificationBy: Rebill.getIdentificationBy,
     customer,
     sdk,
   };

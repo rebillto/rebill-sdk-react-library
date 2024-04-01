@@ -154,18 +154,17 @@ interface Text {
 interface RebillContextValue {
     setCustomer: React.Dispatch<React.SetStateAction<Customer>>;
     setTransaction: (transactionData: Transaction) => void;
+    addCard: (customerId: string) => void;
+    renewCard: (subscriptionId: string) => void;
     setStyles: (styles: Styles) => void;
     setText: (text: Text) => void;
     setCallbacks: (onSuccess: Function, onError: Function) => void;
     setMetadata: React.Dispatch<React.SetStateAction<Object>>;
-    getStatesBy: typeof Rebill.getStatesBy;
-    getIdentificationBy: typeof Rebill.getIdentificationBy;
     customer: Customer;
     sdk: Rebill.setSdk | null;
 }
 
-declare function isValidCustomer(customer: Customer): boolean;
 declare const RebillProvider: React.FC<RebillProviderProps>;
 declare const useRebill: () => RebillContextValue;
 
-export { RebillProvider, isValidCustomer, useRebill };
+export { RebillProvider, useRebill };
