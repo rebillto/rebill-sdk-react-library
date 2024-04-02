@@ -1,6 +1,6 @@
 {
   "name": "rebill-react",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "A helper integration for Rebill's JS SDK in React",
   "main": "dist/esm/index.js",
   "types": "dist/index.d.ts",
