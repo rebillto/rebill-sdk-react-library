@@ -57,8 +57,8 @@ export const RebillProvider: React.FC<RebillProviderProps> = ({
   useEffect(() => {
     if (apiKey && rebillId) {
       try {
-        console.log('apiKey', apiKey);
-        console.log('rebillId', rebillId);
+        const container = document.getElementById(rebillId);
+        if (!container) throw new Error("HTMLElement not found.");
         const checkout = new Rebill.setSdk(apiKey);
         setSdk(checkout);
       } catch (e) {
