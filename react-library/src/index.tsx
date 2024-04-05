@@ -55,12 +55,11 @@ export const RebillProvider: React.FC<RebillProviderProps> = ({
   const [sdk, setSdk] = useState<Rebill.setSdk | null>(null);
 
   useEffect(() => {
-    if (!apiKey) return;
-    if (!rebillId) return;
+    if (apiKey && rebillId) {
+      const checkout = new Rebill.setSdk(apiKey);
 
-    const checkout = new Rebill.setSdk(apiKey);
-
-    setSdk(checkout);
+      setSdk(checkout);
+    }
   }, [apiKey]);
 
   useEffect(() => {
