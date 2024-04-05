@@ -55,10 +55,8 @@ export const RebillProvider: React.FC<RebillProviderProps> = ({
   const [sdk, setSdk] = useState<Rebill.setSdk | null>(null);
 
   useEffect(() => {
-    if (!apiKey) {
-      console.error("Rebill API key is not provided");
-      return;
-    }
+    if (!apiKey) return;
+    if (!rebillId) return;
 
     const checkout = new Rebill.setSdk(apiKey);
 
@@ -120,8 +118,7 @@ export const RebillProvider: React.FC<RebillProviderProps> = ({
         onError,
       });
     }
-  };  
-  
+  };
 
   const contextValue = {
     setCustomer,
