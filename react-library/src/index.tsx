@@ -59,7 +59,7 @@ export const RebillProvider: React.FC<RebillProviderProps> = ({
       const checkout = new Rebill.setSdk(apiKey);
 
       setSdk(checkout);
-    }
+    } else console.log('API Key and id element must be provided');
   }, [apiKey]);
 
   useEffect(() => {
