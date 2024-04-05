@@ -57,13 +57,15 @@ export const RebillProvider: React.FC<RebillProviderProps> = ({
   useEffect(() => {
     if (apiKey && rebillId) {
       try {
+        console.log('apiKey', apiKey);
+        console.log('rebillId', rebillId);
         const checkout = new Rebill.setSdk(apiKey);
         setSdk(checkout);
       } catch (e) {
         console.error("Error: please verify your API key and rebill id", e);
       }
     }
-  }, [apiKey]);
+  }, [apiKey, rebillId]);
 
   useEffect(() => {
     if (sdk) {
