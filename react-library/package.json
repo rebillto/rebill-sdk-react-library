@@ -36,6 +36,6 @@
   "author": "Alejo Rojas",
   "license": "ISC",
   "dependencies": {
-    "rebill": "^1.0.16"
+    "rebill": "^1.0.20"
   }
 }
