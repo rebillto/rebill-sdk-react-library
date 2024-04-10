@@ -56,14 +56,8 @@ export const RebillProvider: React.FC<RebillProviderProps> = ({
 
   useEffect(() => {
     if (apiKey && rebillId) {
-      try {
-        const container = document.getElementById(rebillId);
-        if (!container) throw new Error("HTMLElement not found.");
-        const checkout = new Rebill.setSdk(apiKey);
-        setSdk(checkout);
-      } catch (e) {
-        console.error("Error: please verify your API key and rebill id", e);
-      }
+      const checkout = new Rebill.setSdk(apiKey);
+      setSdk(checkout);
     }
   }, [apiKey, rebillId]);
 
@@ -114,12 +108,24 @@ export const RebillProvider: React.FC<RebillProviderProps> = ({
       sdk.setText(text);
     }
   };
+  const submitPaymentWithCard = () => {
+    if (sdk) {
+      sdk.submitPaymentWithCard();
+    }
+  };
 
-  const setCallbacks = (onSuccess: Function, onError: Function) => {
+  const setCallbacks = (
+    onSuccess: Function,
+    onError: Function,
+    onLoading: Function,
+    onDisabled: Function
+  ) => {
     if (sdk) {
       sdk.setCallbacks({
         onSuccess,
         onError,
+        onLoading,
+        onDisabled,
       });
     }
   };
@@ -133,6 +139,7 @@ export const RebillProvider: React.FC<RebillProviderProps> = ({
     setText,
     setCallbacks,
     setMetadata,
+    submitPaymentWithCard,
     customer,
     sdk,
   };

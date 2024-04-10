@@ -158,7 +158,8 @@ interface RebillContextValue {
     renewCard: (subscriptionId: string) => void;
     setStyles: (styles: Styles) => void;
     setText: (text: Text) => void;
-    setCallbacks: (onSuccess: Function, onError: Function) => void;
+    setCallbacks: (onSuccess: Function, onError: Function, onLoading: Function, onDisabled: Function) => void;
+    submitPaymentWithCard: () => void;
     setMetadata: React.Dispatch<React.SetStateAction<Object>>;
     customer: Customer;
     sdk: Rebill.setSdk | null;
