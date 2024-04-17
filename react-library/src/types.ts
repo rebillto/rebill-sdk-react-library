@@ -93,8 +93,8 @@ export interface RebillProviderProps {
 
 export interface Transaction {
   id: string;
-  currency: string;
-  quantity: number;
+  currency?: string;
+  quantity?: number;
 }
 export interface Styles {
   rebill_options_container?: React.CSSProperties;

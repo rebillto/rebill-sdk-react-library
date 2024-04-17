@@ -1,6 +1,6 @@
 {
   "name": "rebill-react",
-  "version": "1.0.20",
+  "version": "1.0.26",
   "description": "A helper integration for Rebill's JS SDK in React",
   "main": "dist/esm/index.js",
   "types": "dist/index.d.ts",
@@ -26,7 +26,7 @@
   "peerDependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "rebill": "^1.0.18"
+    "rebill": "^1.0.22"
   },
   "keywords": [
     "react",
@@ -36,6 +36,6 @@
   "author": "Alejo Rojas",
   "license": "ISC",
   "dependencies": {
-    "rebill": "^1.0.20"
+    "rebill": "^1.0.21"
   }
 }
