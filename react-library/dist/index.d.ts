@@ -1,4 +1,5 @@
 /// <reference types="react" />
+import * as react_jsx_runtime from 'react/jsx-runtime';
 import { ReactNode } from 'react';
 import * as Rebill from 'rebill';
 
@@ -20,39 +21,19 @@ interface Identification {
     type: string;
     value: string;
 }
-declare enum IsoCountryEnum {
-    ARGENTINA = "AR",
-    BOLIVIA = "BO",
-    BRASIL = "BR",
-    CHILE = "CL",
-    COLOMBIA = "CO",
-    COSTA_RICA = "CR",
-    HONDURAS = "HN",
-    ECUADOR = "EC",
-    ESTADOS_UNIDOS = "US",
-    GUATEMALA = "GT",
-    MEXICO = "MX",
-    PANAMA = "PA",
-    PARAGUAY = "PY",
-    PERU = "PE",
-    REINO_UNIDO = "UK",
-    REPUBLICA_DOMINICANA = "DO",
-    URUGUAY = "UY",
-    INDIFFERENT = "I"
-}
 interface PersonalId extends Omit<Identification, "name"> {
     value: string;
 }
 interface Address {
     street: string;
     number: string;
-    floor: string;
-    apt: string;
+    floor?: string;
+    apt?: string;
     city: string;
     state: string;
     zipCode: string;
-    country: IsoCountryEnum;
-    description: string;
+    country: string;
+    description?: string;
 }
 interface Phone {
     countryCode: string;
@@ -71,18 +52,17 @@ interface Customer {
     phone: Phone;
     personalId: PersonalId;
     address: Address;
-    taxId: TaxId;
+    taxId?: TaxId;
     card?: Card;
 }
 interface RebillProviderProps {
     children: ReactNode;
     apiKey: string;
-    rebillId: string;
 }
 interface Transaction {
     id: string;
-    currency: string;
-    quantity: number;
+    currency?: string;
+    quantity?: number;
 }
 interface Styles {
     rebill_options_container?: React.CSSProperties;
@@ -167,5 +147,6 @@ interface RebillContextValue {
 
 declare const RebillProvider: React.FC<RebillProviderProps>;
 declare const useRebill: () => RebillContextValue;
+declare const Checkout: () => react_jsx_runtime.JSX.Element;
 
-export { RebillProvider, useRebill };
+export { Checkout, RebillProvider, useRebill };

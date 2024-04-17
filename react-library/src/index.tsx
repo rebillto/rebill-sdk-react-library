@@ -42,24 +42,24 @@ function isValidCustomer(customer: Customer) {
     hasValidAddressStructure
   );
 }
+const rebillId = "rebill_elements";
 
 const RebillContext = createContext<RebillContextValue | undefined>(undefined);
 
 export const RebillProvider: React.FC<RebillProviderProps> = ({
   children,
   apiKey,
-  rebillId,
 }) => {
   const [customer, setCustomer] = useState<Customer>({} as Customer);
   const [metadata, setMetadata] = useState<Object>({});
   const [sdk, setSdk] = useState<Rebill.setSdk | null>(null);
 
   useEffect(() => {
-    if (apiKey && rebillId) {
+    if (apiKey) {
       const checkout = new Rebill.setSdk(apiKey);
       setSdk(checkout);
     }
-  }, [apiKey, rebillId]);
+  }, [apiKey]);
 
   useEffect(() => {
     if (sdk) {
@@ -157,4 +157,8 @@ export const useRebill = (): RebillContextValue => {
     throw new Error("useRebill must be used within a RebillProvider");
   }
   return context;
+};
+
+export const Checkout = () => {
+  return <div id={rebillId}></div>;
 };

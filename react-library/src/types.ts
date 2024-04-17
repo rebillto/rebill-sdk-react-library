@@ -53,13 +53,13 @@ export interface PersonalId extends Omit<Identification, "name"> {
 export interface Address {
   street: string;
   number: string;
-  floor: string;
-  apt: string;
+  floor?: string;
+  apt?: string;
   city: string;
   state: string;
   zipCode: string;
-  country: IsoCountryEnum;
-  description: string;
+  country: string;
+  description?: string;
 }
 
 export interface Phone {
@@ -81,14 +81,13 @@ export interface Customer {
   phone: Phone;
   personalId: PersonalId;
   address: Address;
-  taxId: TaxId;
+  taxId?: TaxId;
   card?: Card;
 }
 
 export interface RebillProviderProps {
   children: ReactNode;
   apiKey: string;
-  rebillId: string;
 }
 
 export interface Transaction {
