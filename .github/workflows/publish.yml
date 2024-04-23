@@ -1,0 +1,23 @@
+name: CI/CD for rebill-react library
+
+on: push
+
+jobs:
+  npm-publish:
+    if: github.ref == 'refs/heads/main' && !contains(github.event.head_commit.message, '[Skip CI]')
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "21"
+      - name: Install
+        run: npm install
+      - name: Build
+        run: npm run build
+      - name: Publish package
+        run: npm run semantic-release
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

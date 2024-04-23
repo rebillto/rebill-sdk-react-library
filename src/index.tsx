@@ -15,7 +15,6 @@ function isValidCustomer(customer: Customer) {
     "lastName" in customer &&
     "email" in customer &&
     "phone" in customer &&
-    "personalId" in customer &&
     "address" in customer;
 
   if (!hasBasicProperties) return false;
