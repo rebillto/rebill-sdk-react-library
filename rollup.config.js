@@ -24,7 +24,6 @@ export default [
         exclude: ['test/**/**']
       }),
       peerDepsExternal(),
-
       resolve(),
       commonjs(),
 
