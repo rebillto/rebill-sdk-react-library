@@ -20,7 +20,9 @@ export default [
       },
     ],
     plugins: [
-      typescript(),
+      typescript({
+        exclude: ['test/**/**']
+      }),
       peerDepsExternal(),
 
       resolve(),
